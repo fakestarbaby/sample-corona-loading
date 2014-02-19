@@ -2,22 +2,15 @@
 local composer = require("composer")
 local scene = composer.newScene()
 
--- Requires
-local View = require("app.views.menuView")
+-- View
+local view = require("app.views.overlays.loadingView").new()
 
 -- Create scene
 function scene:create(event)
   local group = self.view
 
   -- Insert view
-  local view = View.new()
   group:insert(view)
-
-  -- Download button event listener
-  view.btnDownload:addEventListener("tap", function(event)
-    -- Show overlay: Loading
-    composer.showOverlay("app.controllers.overlays.loadingController", { effect = "fade", time = 250, isModal = true })
-  end)
 end
 
 -- Show scene
@@ -27,6 +20,8 @@ function scene:show(event)
 
   if phase == "will" then
   elseif phase == "did" then
+    -- Start spinner
+    view.spinner:start()
   end
 end
 

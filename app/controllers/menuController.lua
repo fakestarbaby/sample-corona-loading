@@ -2,15 +2,14 @@
 local composer = require("composer")
 local scene = composer.newScene()
 
--- Requires
-local View = require("app.views.menuView")
+-- View
+local view = require("app.views.menuView").new()
 
 -- Create scene
 function scene:create(event)
   local group = self.view
 
   -- Insert view
-  local view = View.new()
   group:insert(view)
 
   -- Download button event listener

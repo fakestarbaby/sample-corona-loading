@@ -12,10 +12,22 @@ function scene:create(event)
   -- Insert view
   group:insert(view)
 
+  --- Private: download
+  local function download()
+    -- Show overlay: Loading
+    composer.setVariable("loading", true)
+    composer.showOverlay("app.controllers.overlays.loadingController", { effect = "fade", time = 250, isModal = true })
+
+    -- Download
+    timer.performWithDelay(5000, function(event)
+      composer.setVariable("loading", false)
+    end)
+  end
+
   -- Download button event listener
   view.btnDownload:addEventListener("tap", function(event)
-    -- Show overlay: Loading
-    composer.showOverlay("app.controllers.overlays.loadingController", { effect = "fade", time = 250, isModal = true })
+    -- Download
+    download()
   end)
 end
 

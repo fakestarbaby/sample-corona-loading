@@ -1,4 +1,3 @@
-sample-corona-loading
-=====================
+# sample-corona-loading
 
 Loading scene sample code for Corona SDK.
